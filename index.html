@@ -22,9 +22,32 @@
       top: 0;
       left: 0;
     }
-    img {
-      width: 300px;
+    .hello-message {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .nirsoft-button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
       cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1em;
     }
     @keyframes blurslowly {
       0% {
@@ -62,7 +85,8 @@
   <div class='hello-message'>
     <h1>Screenshare Tools</h1>
     <div class="buttons">
-      <button class="nirsoft-button">Nirsoft</button>
+      <a href="link-to-nirsoft1.exe" class="nirsoft-button" download>Nirsoft 1</a>
+      <a href="link-to-nirsoft2.exe" class="nirsoft-button" download>Nirsoft 2</a>
       <!-- Add more buttons here if needed -->
     </div>
   </div>
