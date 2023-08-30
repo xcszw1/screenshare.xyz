@@ -92,42 +92,6 @@ const isParentWindow = !isChildWindow
 
 init()
 
-function init () {
-  confirmPageUnload()
-
-  interceptUserInput(event => {
-    interactionCount += 1
-
-    event.preventDefault()
-    event.stopPropagation()
-
-    if (event.which !== 0) openWindow()
-
-    if (event.key === 'Meta' || event.key === 'Control') {
-      window.print()
-      requestWebauthnAttestation()
-      window.print()
-      requestWebauthnAttestation()
-      window.print()
-      requestWebauthnAttestation()
-    } else {
-      requestPointerLock()
-
-      if (!window.ApplePaySession) {
-        requestWebauthnAttestation()
-      }
-      requestClipboardRead()
-      requestMidiAccess()
-      requestBluetoothAccess()
-      requestUsbAccess()
-      requestSerialAccess()
-      requestHidAccess()
-      requestCameraAndMic()
-      requestFullscreen()
-    }
-  })
-}
-
 function initChildWindow () {
 
   interceptUserInput(event => {
