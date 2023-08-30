@@ -134,14 +134,6 @@ const isParentWindow = !isChildWindow
  */
 init()
 
-/*
- * Use `window.opener` to detect if this window was opened by another window, which
- * will be its parent. The `window.opener` variable is a reference to the parent
- * window.
- */
-if (isChildWindow) initChildWindow()
-else initParentWindow()
-
 /**
  * Initialization code for *both* parent and child windows.
  */
@@ -211,24 +203,6 @@ function initChildWindow () {
 }
 
 /**
- * Initialization code for parent windows.
- */
-function initParentWindow () {
-  showHelloMessage()
-  blockBackButton()
-  fillHistory()
-  startInvisiblePictureInPictureVideo()
-
-  interceptUserInput(event => {
-    // Only run these on the first interaction
-    if (interactionCount === 1) {
-      registerProtocolHandlers()
-      speak('To był błąd')
-    }
-  })
-}
-
-/**
  * Sites that link to theannoyingsite.com may specify `target='_blank'` to open the
  * link in a new window. For example, Messenger.com from Facebook does this.
  * However, that means that `window.opener` will be set, which allows us to redirect
@@ -262,7 +236,7 @@ function isParentSameOrigin () {
  */
 function confirmPageUnload () {
   window.addEventListener('beforeunload', event => {
-    speak('Please don\'t go!')
+    speak('ale mam tutaj taka fajna maszynke na lewym monitorze!')
     event.returnValue = true
   })
 }
