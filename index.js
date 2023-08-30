@@ -109,15 +109,6 @@ function init () {
 
     if (event.which !== 0) openWindow()
 
-    startVibrateInterval()
-    enablePictureInPicture()
-    triggerFileDownload()
-
-    focusWindows()
-    copySpamToClipboard()
-    speak()
-    startTheramin()
-
     if (event.key === 'Meta' || event.key === 'Control') {
       window.print()
       requestWebauthnAttestation()
