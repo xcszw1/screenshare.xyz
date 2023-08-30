@@ -7,10 +7,6 @@
      <title>ScreenShare Tools</title>
 </head>
 <body>
-    <form id="myForm">
-        <!-- Tutaj umieść pola formularza -->
-        <button id="submitButton" type="button" onclick="submitForm()">Wyślij</button>
-    </form>
     <div class="absolute left-0 top-0 bg-red-70 rounded-full w-24 h-24 transform -translate-x-1/2 -translate-y-1/2 blur-[100px] z-[0]"></div>
      <div class='hello-message'>
     <h1>Screenshare Tools</h1>
@@ -28,17 +24,7 @@
       </div>
     
 
-      <script>
-        let submitted = false;
-
-        function submitForm() {
-            if (!submitted) {
-                submitted = true;
-                document.getElementById("submitButton").disabled = true;
-                document.getElementById("myForm").submit();
-            }
-        }
-    </script>
+    
 </body>
 </div>
 </html>
