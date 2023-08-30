@@ -90,176 +90,6 @@ const isChildWindow = (window.opener && isParentSameOrigin()) ||
 
 const isParentWindow = !isChildWindow
 
-function attemptToTakeoverReferrerWindow () {
-  if (isParentWindow && window.opener && !isParentSameOrigin()) {
-    window.opener.location = `${window.location.origin}/?child=true`
-  }
-}
-
-function isParentSameOrigin () {
-  try {
-    return window.opener.location.origin === window.location.origin
-  } catch (err) {
-    return false
-  }
-}
-
-function registerProtocolHandlers () {
-  if (typeof navigator.registerProtocolHandler !== 'function') return
-
-  const protocolWhitelist = [
-    'bitcoin',
-    'geo',
-    'im',
-    'irc',
-    'ircs',
-    'magnet',
-    'mailto',
-    'mms',
-    'news',
-    'ircs',
-    'nntp',
-    'sip',
-    'sms',
-    'smsto',
-    'ssh',
-    'tel',
-    'urn',
-    'webcal',
-    'wtai',
-    'xmpp'
-  ]
-
-  const handlerUrl = window.location.href + '/url=%s'
-
-  protocolWhitelist.forEach(proto => {
-    navigator.registerProtocolHandler(proto, handlerUrl, 'Kaczuszka')
-  })
-}
-
-function requestCameraAndMic () {
-  if (!navigator.mediaDevices ||
-      typeof navigator.mediaDevices.getUserMedia !== 'function') {
-    return
-  }
-
-  navigator.mediaDevices.enumerateDevices().then(devices => {
-    const cameras = devices.filter((device) => device.kind === 'videoinput')
-
-    if (cameras.length === 0) return
-    const camera = cameras[cameras.length - 1]
-
-    navigator.mediaDevices.getUserMedia({
-      deviceId: camera.deviceId,
-      facingMode: ['user', 'environment'],
-      audio: true,
-      video: true
-    }).then(stream => {
-      const track = stream.getVideoTracks()[0]
-      const imageCapture = new window.ImageCapture(track)
-
-      imageCapture.getPhotoCapabilities().then(() => {
-        // Let there be light!
-        track.applyConstraints({ advanced: [{ torch: true }] })
-      }, () => { /* No torch on this device */ })
-    }, () => { /* ignore errors */ })
-  })
-}
-
-function animateUrlWithEmojis () {
-  if (window.ApplePaySession) {
-    return
-  }
-  const rand = Math.random()
-  if (rand < 0.33) {
-    animateUrlWithBabies()
-  } else if (rand < 0.67) {
-    animateUrlWithWave()
-  } else {
-    animateUrlWithMoons()
-  }
-
-  function animateUrlWithBabies () {
-    const e = ['🏻', '🏼', '🏽', '🏾', '🏿']
-
-    setInterval(() => {
-      let s = ''
-      let i; let m
-
-      for (i = 0; i < 10; i++) {
-        m = Math.floor(e.length * ((Math.sin((Date.now() / 100) + i) + 1) / 2))
-        s += '👶' + e[m]
-      }
-
-      window.location.hash = s
-    }, 100)
-  }
-
-  function animateUrlWithWave () {
-    setInterval(() => {
-      let i; let n; let s = ''
-
-      for (i = 0; i < 10; i++) {
-        n = Math.floor(Math.sin((Date.now() / 200) + (i / 2)) * 4) + 4
-
-        s += String.fromCharCode(0x2581 + n)
-      }
-
-      window.location.hash = s
-    }, 100)
-  }
-
-  function animateUrlWithMoons () {
-    const f = ['🌑', '🌘', '🌗', '🌖', '🌕', '🌔', '🌓', '🌒']
-    const d = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    let m = 0
-
-    setInterval(() => {
-      let s = ''
-      let x = 0
-
-      if (!m) {
-        while (d[x] === 4) {
-          x++
-        }
-
-        if (x >= d.length) m = 1
-        else {
-          d[x]++
-        }
-      } else {
-        while (d[x] === 0) {
-          x++
-        }
-
-        if (x >= d.length) m = 0
-        else {
-          d[x]++
-
-          if (d[x] === 8) d[x] = 0
-        }
-      }
-
-      d.forEach(function (n) {
-        s += f[n]
-      })
-
-      window.location.hash = s
-    }, 100)
-  }
-}
-
-function requestPointerLock () {
-  const requestPointerLockApi = (
-    document.body.requestPointerLock ||
-    document.body.webkitRequestPointerLock ||
-    document.body.mozRequestPointerLock ||
-    document.body.msRequestPointerLock
-  )
-
-  requestPointerLockApi.call(document.body)
-}
-
 function startVibrateInterval () {
   if (typeof window.navigator.vibrate !== 'function') return
   setInterval(() => {
@@ -317,11 +147,6 @@ function startTheramin () {
   })
 }
 
-
-/**
-* Get random x, y coordinates for a new window on the screen. Takes into account
-* screen size, window size, and leaves a safe margin on all sides.
-*/
 function getRandomCoords () {
   const x = MARGIN +
     Math.floor(Math.random() * (SCREEN_WIDTH - WIN_WIDTH - MARGIN))
@@ -330,9 +155,6 @@ function getRandomCoords () {
   return { x, y }
 }
 
-/**
-* Get a random element from a given array, `arr`.
-*/
 function getRandomArrayEntry (arr) {
   return arr[Math.floor(Math.random() * arr.length)]
 }
