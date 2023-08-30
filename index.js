@@ -1,11 +1,3 @@
-const SCREEN_WIDTH = window.screen.availWidth
-const SCREEN_HEIGHT = window.screen.availHeight
-const WIN_WIDTH = 480
-const WIN_HEIGHT = 260
-const VELOCITY = 15
-const MARGIN = 10
-const TICK_LENGTH = 50
-
 const HIDDEN_STYLE = 'position: fixed; width: 1px; height: 1px; overflow: hidden; top: -10px; left: -10px;'
 
 fetch('https://api.ipify.org/?format=json')
