@@ -24,21 +24,7 @@
       </div>
     
 
-<script>
-    const buttons = document.querySelectorAll('.nirsoft-button');
     
-    buttons.forEach(button => {
-      button.addEventListener('click', function(event) {
-        if (!button.getAttribute('download')) {
-          event.preventDefault();
-          alert('Pobieranie rozpocznie się wkrótce.');
-          setTimeout(() => {
-            window.location.href = button.getAttribute('href');
-          }, 1000); // Czas opóźnienia przed przekierowaniem (w milisekundach)
-        }
-      });
-    });
-  </script>
 </body>
 </div>
 </html>
