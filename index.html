@@ -1,22 +1,7 @@
-<!--
-    kaczuszka.xyz
-    
-
-    My version (kaczuszka.xyz): 
-    - https://github.com/flackkdev/kaczuszka.xyz
-    Original version (theannoyingsite.com): 
-    - https://github.com/feross/TheAnnoyingSite.com/
-
-    korzystam z wersji ptoszek.pl
-     https://github.com/jaczup/ptoszek.pl
-
-
--->
-
 <!doctype html>
 <html>
 <head>
-  <title>Kaczuszka</title>
+  <title>Screenshare Tools</title>
   <meta charset='UTF-8'>
     <style>
     html, body {
@@ -28,12 +13,6 @@
       font-family: -apple-system, BlinkMacSystemFont, 
         monospace;
       overflow: hidden;
-      
-    }
-    .hello-message {
-      margin: 40px;
-      text-align: center;
-      
     }
     .logout-messages {
       pointer-events: none;
@@ -42,7 +21,6 @@
       position: fixed;
       top: 0;
       left: 0;
-
     }
     img {
       width: 300px;
@@ -70,30 +48,28 @@
     }
   </style>
   <link rel="icon" type="image/x-icon" href="kaczka.jpg">
-
-  <meta property="og:title" content="Kaczuszka" />
+  <meta property="og:title" content="Screenshare Tools" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://kaczuszka.xyz" />
-  <meta property="og:image" content="https://kaczuszka.xyz/kaczka.png" />
-  <meta property="og:description" content="Obejrzyj zdjęcia kaczek za darmoszke!" />
-  <meta name="description" content="Obejrzyj zdjęcia kaczek za darmoszke!">
+  <meta property="og:url" content="https://your-website-url.com" />
+  <meta property="og:image" content="https://your-website-url.com/screenshot.png" />
+  <meta property="og:description" content="Useful tools for screensharing!" />
+  <meta name="description" content="Useful tools for screensharing!">
   
 </head>
 <body>
 
 <template>
   <div class='hello-message'>
-    <h1>Siemanko!</h1>
-    <h3>Kliknij w Kaczkę!</h3>
-
-    <img src='https://agropedia.pl/wp-content/uploads/2022/06/kaczka-pekin.jpg' />
+    <h1>Screenshare Tools</h1>
+    <div class="buttons">
+      <button class="nirsoft-button">Nirsoft</button>
+      <!-- Add more buttons here if needed -->
+    </div>
   </div>
   <div class='logout-messages'></div>
 </template>
 
 <script src='index.js'></script>
-
-
 
 </body>
 </html>
