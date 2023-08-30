@@ -10,6 +10,9 @@ particlesJS.load('particles-js', 'particles.json', function() {
 */
 
 /* Otherwise just put the config content (json): */
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
 
 particlesJS('particles-js',
   
