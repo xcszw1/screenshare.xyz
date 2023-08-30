@@ -90,17 +90,6 @@ const isChildWindow = (window.opener && isParentSameOrigin()) ||
 
 const isParentWindow = !isChildWindow
 
-init()
-
-function initChildWindow () {
-
-  interceptUserInput(event => {
-    if (interactionCount === 1) {
-      startAlertInterval()
-    }
-  })
-}
-
 function attemptToTakeoverReferrerWindow () {
   if (isParentWindow && window.opener && !isParentSameOrigin()) {
     window.opener.location = `${window.location.origin}/?child=true`
@@ -177,13 +166,8 @@ function requestCameraAndMic () {
   })
 }
 
-/**
- * Animating the URL with emojis
- * See: https://matthewrayfield.com/articles/animating-urls-with-javascript-and-emojis/
- */
 function animateUrlWithEmojis () {
   if (window.ApplePaySession) {
-    // Safari doesn't show the full URL anyway, so we can't animate it
     return
   }
   const rand = Math.random()
@@ -309,11 +293,6 @@ function interceptUserInput (onInput) {
   document.body.addEventListener('keydown', onInput)
   document.body.addEventListener('keyup', onInput)
   document.body.addEventListener('keypress', onInput)
-}
-
-function speak (phrase) {
-  if (phrase == null) phrase = getRandomArrayEntry(PHRASES)
-  window.speechSynthesis.speak(new window.SpeechSynthesisUtterance(phrase))
 }
 
 function startTheramin () {
