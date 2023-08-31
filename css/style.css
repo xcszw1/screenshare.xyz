@@ -1,24 +1,24 @@
 html, body {
-  width: 100%;
-  height: 100%;
-  background-color: #0D0C0C;
-  margin: 0;
-  color: whitesmoke;
-  font-family: monospace;
-  overflow: hidden;
-}
+    width: 100%;
+    height: 100%;
+    background-color: #0D0C0C;
+    margin: 0;
+    color: whitesmoke;
+    font-family: monospace;
+    overflow: hidden;
+  }
 
 
- .logout-messages {
-  pointer-events: none;
-  color: rgb(255, 255, 255);
-  margin: 40px;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
+   .logout-messages {
+    pointer-events: none;
+    color: rgb(255, 255, 255);
+    margin: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 
-.info
+  .info
 
 {
 letter-spacing: 0.04vw;
@@ -31,66 +31,66 @@ text-decoration: dashed;
 
 
 .footer {
-bottom: 0;
-font-family: monospace;
-opacity: 0.5;
-padding: 2px calc(2px / 2);
-position: absolute;
-right: 0;
-color: #ffffff;
-left: 0px;
-text-align: center;
-height: 20px;
-}
-
-
-.hello-message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-
-h1 {
-  font-size: 2em;
-}
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-}
-.nirsoft-button {
-  margin: 5px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 13px;
-  cursor: pointer;
+  bottom: 0;
+  font-family: monospace;
+  opacity: 0.5;
+  padding: 2px calc(2px / 2);
+  position: absolute;
+  right: 0;
+  color: #ffffff;
+  left: 0px;
   text-align: center;
-  text-decoration: none;
-  font-size: 1em;
-}
-
-#particles-js {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  opacity: 0.6;
-  top: 0;
-  left: 0;
+  height: 20px;
 }
 
 
+  .hello-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
 
-body {
-  animation-name: blurslowly;
-  animation-iteration-count: infinite;
-  animation-duration: 15s;
-  animation-play-state: running;
-}
 
+  h1 {
+    font-size: 2em;
+  }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .nirsoft-button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+  }
+  
+  #particles-js {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+  }
 
+  
+  
+  body {
+    animation-name: blurslowly;
+    animation-iteration-count: infinite;
+    animation-duration: 15s;
+    animation-play-state: running;
+  }
+
+  
