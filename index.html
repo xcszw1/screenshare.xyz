@@ -4,34 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script type="text/javascript" src ="./js/index.js"></script>
-     <title>ScreenShare Tools</title>
+    <script type="text/javascript" src="./js/index.js"></script>
+    <title>ScreenShare Tools</title>
+    <style>
+        .scanner-text {
+            display: block;
+            margin-top: 30px;
+            font-size: 1.5em;
+            text-shadow: 0px 0px 10px #007bff;
+            color: white;
+        }
+
+        .title-text {
+            font-size: 2.5em;
+            text-shadow: 0px 0px 10px #007bff;
+            margin-top: 0;
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .scanner-buttons, .scanner-buttons a {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .nirsoft-button,
+        .pc-guardian-button,
+        .ocean-download-button,
+        .golden-download-button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 13px;
+            opacity: 1;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1em;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="absolute left-0 top-0 bg-red-70 rounded-full w-24 h-24 transform -translate-x-1/2 -translate-y-1/2 blur-[100px] z-[0]"></div>
-     <div class='hello-message'>
-    <h1>Screenshare Tools</h1>
-    
+    <div class="hello-message">
+        <h1 class="title-text">screenshare.xyz</h1>
+        
+        <span class="scanner-text">- Tools -</span>
 
+        <div class="scanner-buttons">
+            <a href="https://www.nirsoft.net/utils/lastactivityview.zip" class="nirsoft-button" download>Nirsoft Last Activity View</a>
+            <a href="https://www.voidtools.com/Everything-1.4.1.1024.x86-Setup.exe" class="nirsoft-button" download>Everything</a>
+            <a href="https://systeminformer.sourceforge.io/nightly.php" class="nirsoft-button" download>System Informer</a>
+            <a href="https://www.nirsoft.net/utils/web_browser_downloads_view.html" class="nirsoft-button" download>Nirsoft Browser Download</a>
+        </div>
 
-    <div class="buttons">
-      <a href="link-to-nirsoft1.exe" class="nirsoft-button" download>Nirsoft Last Activity View</a>
-      <a href="link-to-nirsoft2.exe" class="nirsoft-button" download>Nirsoft Browser Downloads</a>
+        <div style="margin-bottom: 20px;"></div>
+        
+        <span class="scanner-text">- Scanners -</span>
 
-      
-
-      <div id="particles-js"></div>
-      <script type="text/javascript" src ="./js/particles.js"></script>
-      <script type="text/javascript" src ="./js/app.js"></script>
-      </div>
-      <div footer class="footer">
-        <div class="footer">
-           <a href="" target="_blank" class="info">screenshare.xyz<script>
-            </script>
-
-            
-
-    
+        <div class="scanner-buttons">
+            <a href="https://anticheat.site/download/" class="ocean-download-button" download>Ocean</a>
+            <a href="https://pcguardian.xyz/Guardian.exe" class="pc-guardian-button" download>PC-Guardian</a>
+            <a href="https://youtube.com" class="golden-download-button" download>Echo.ac</a>
+        </div>
+    </div>
+    <div id="particles-js"></div>
+    <script type="text/javascript" src="./js/particles.js"></script>
+    <script type="text/javascript" src="./js/app.js"></script>
+    <div footer class="footer">
+        <a href="" target="_blank" class="info">screenshare.xyz</a>
+    </div>
 </body>
-</div>
 </html>
