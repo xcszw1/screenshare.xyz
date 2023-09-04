@@ -19,12 +19,12 @@ html, body {
   }
 
   .info
-
 {
 letter-spacing: 0.04vw;
 padding-left: -1vw;
 padding-right: 0.3vw;
 color: #ffffff;
+z-index: 1;
 font-family: monospace;
 text-decoration: dashed;
 }
@@ -79,6 +79,57 @@ text-decoration: dashed;
     font-size: 1em;
     z-index: 1
   }
+          .scanner-text {
+            display: block;
+            margin-top: 30px;
+            font-size: 1.5em;
+            text-shadow: 0px 0px 10px #007bff;
+            box-shadow: 0px 0px 10px #007bff;
+            padding: 10px 10px;
+            background-color: #000000;
+            border-radius: 10px;
+            color: rgb(255, 255, 255);
+        }
+
+        .title-text {
+            font-size: 2.5em;
+            background: linear-gradient(rgba(0, 123, 255, 0.1), transparent);
+            text-shadow: 0px 0px 10px #007bff;
+            box-shadow: 0px 0px 10px #007bff;
+            margin-top: 0;
+            opacity: 100%;
+            transform: translateX(-50%);
+            padding: 10px 10px;
+            border-radius: 10px;
+            position: absolute;
+            top: 5%;
+            left: 50%;
+        }
+
+        .scanner-buttons, .scanner-buttons a {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .nirsoft-button,
+        .pc-guardian-button,
+        .ocean-download-button,
+        .golden-download-button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 13px;
+            opacity: 1;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1em;
+            z-index: 1;
+        }
 
       #particles-js {
     width: 100%;
@@ -89,3 +140,15 @@ text-decoration: dashed;
     left: 0;
   }
   
+
+  
+#confirmation
+{
+  letter-spacing: 0.04vw;
+padding-left: -1vw;
+padding-right: 0.3vw;
+color: #ffffff;
+z-index: 1;
+font-family: monospace;
+text-decoration: dashed;
+}
