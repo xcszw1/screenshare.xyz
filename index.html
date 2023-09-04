@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script type="text/javascript" src="./js/index.js"></script>
-    <title>ScreenShare Tools</title>
+    <title>Screenshare.xyz</title>
     <style>
+        
         .scanner-text {
             display: block;
             margin-top: 30px;
@@ -50,13 +51,54 @@
             z-index: 1;
         }
     </style>
+    <script>
+        var i=0;
+setInterval(function(){
+    var titles=[
+"Sc",
+"Scr",
+"Scre",
+"Screen",
+"Screens",
+"Screensh",
+"Screensha",
+"Screenshar",
+"Screenshare",
+"Screenshare.",
+"Screenshare.x",
+"Screenshare.xy",
+"Screenshare.xyz",
+"Screenshare.xy",
+"Screenshare.x",
+"Screenshare.",
+"Screenshare",
+"Screenshar",
+"Screensha",
+"Screensh",
+"Screens",
+"Screen",
+"Scree",
+"Scre",
+"Scr",
+"Sc",
+"S",
+]
+
+    if(i===titles.length) {
+        i=0;
+    }
+    document.title = titles[i];
+    i++;
+}, 500);
+
+    </script>
 </head>
 <body>
     <div class="absolute left-0 top-0 bg-red-70 rounded-full w-24 h-24 transform -translate-x-1/2 -translate-y-1/2 blur-[100px] z-[0]"></div>
     <div class="hello-message">
         <h1 class="title-text">screenshare.xyz</h1>
         
-        <span class="scanner-text">- Tools -</span>
+        <span class="scanner-text">-> Tools <-</span>
 
         <div class="scanner-buttons">
             <a href="https://www.nirsoft.net/utils/lastactivityview.zip" class="nirsoft-button" download>Nirsoft Last Activity View</a>
@@ -65,21 +107,21 @@
             <a href="https://www.nirsoft.net/utils/browserdownloadsview-x64.zip" class="nirsoft-button" download>Nirsoft Browser Download</a>
         </div>
 
-        <div style="margin-bottom: 20px;"></div>
+        <div style="margin-bottom: 60px;"></div>
         
-        <span class="scanner-text">- Scanners -</span>
+        <span class="scanner-text">-> Scanners <-</span>
 
         <div class="scanner-buttons">
             <a href="https://anticheat.site/download/" class="ocean-download-button" download>Ocean</a>
             <a href="https://pcguardian.xyz/Guardian.exe" class="pc-guardian-button" download>PC-Guardian</a>
-            <a href="https://youtube.com" class="golden-download-button" download>Echo.ac</a>
+            <a href="https://fdl.echo.ac/" class="golden-download-button" download>Echo.ac</a>
         </div>
     </div>
     <div id="particles-js"></div>
     <script type="text/javascript" src="./js/particles.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
-    <div footer class="footer">
-        <a href="" target="_blank" class="info">screenshare.xyz</a>
+    <div class="footer" style="position: fixed; text-align: left;">
+        <a href="" target="_blank" class="info"> > Made by dipsin/flack.</a>
     </div>
 </body>
 </html>
